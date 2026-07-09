@@ -1,67 +1,516 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #fafaf9}
-    p.p1 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #1f1e1a; -webkit-text-stroke: #1f1e1a}
-    p.p4 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #a1272c; -webkit-text-stroke: #a1272c; min-height: 15.0px}
-    p.p5 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #825203; -webkit-text-stroke: #825203; min-height: 15.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.SF NS'; color: #726d67; -webkit-text-stroke: #726d67; background-color: #b3b3b3}
-    p.p8 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #151513; -webkit-text-stroke: #151513}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #1f1e1a; -webkit-text-stroke: #1f1e1a; min-height: 15.0px}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px '.SF NS'; color: #fafaf9; -webkit-text-stroke: #fafaf9; background-color: #151513}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #1f1e1a; -webkit-text-stroke: #1f1e1a; background-color: #ffffff; min-height: 15.0px}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #151513; -webkit-text-stroke: #151513}
-    p.p14 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67; min-height: 15.0px}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px '.SF NS'; color: #fafaf9; -webkit-text-stroke: #fafaf9}
-    p.p16 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #30593a; -webkit-text-stroke: #30593a; min-height: 15.0px}
-    span.s1 {font-kerning: none; background-color: #ffffff}
-    span.s2 {font: 14.0px '.SF NS'; font-kerning: none; color: #fafaf9; background-color: #151513; -webkit-text-stroke: 0px #fafaf9}
-    span.s3 {font: 12.0px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s4 {font-kerning: none; background-color: #f5f4f0}
-    span.s5 {font-kerning: none}
-    span.s6 {font-kerning: none; background-color: #b3b3b3}
-    span.s7 {font: 12.0px 'Helvetica Neue'; font-kerning: none}
-    span.s8 {font-kerning: none; color: #151513; background-color: #ffffff; -webkit-text-stroke: 0px #151513}
-    span.s9 {font: 12.0px 'Helvetica Neue'; font-kerning: none; color: #1f1e1a; background-color: #f5f4f0; -webkit-text-stroke: 0px #1f1e1a}
-    span.s10 {font-kerning: none; background-color: #151513}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Mis Finanzas</title>
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#FBFBFA" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Firebase SDK (compat, más sencillo de leer/editar) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<style>
+  :root {
+    --bg: #FBFBFA;
+    --surface: #FFFFFF;
+    --surface-soft: #F7F6F3;
+    --border: #EAE7E1;
+    --text: #2A2823;
+    --text-muted: #85807A;
+    --ink: #1C1B18;
+  }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .serif { font-family: 'Newsreader', Georgia, serif; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .divide-warm > * + * { border-top: 1px solid var(--border); }
+  .input-field {
+    width: 100%;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--ink);
+    transition: border-color 150ms ease, background 150ms ease;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: #C9C2B6;
+    background: var(--surface);
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: #FBFBFA;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 150ms ease, background 150ms ease;
+  }
+  .btn-primary:hover { background: #3A382F; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-ghost {
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    transition: background 150ms ease, transform 150ms ease;
+  }
+  .btn-ghost:hover { background: #F0EEE8; }
+  .btn-ghost:active { transform: scale(0.97); }
+  .seg-tab {
+    flex: 1;
+    text-align: center;
+    padding: 9px 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-radius: 999px;
+    transition: color 200ms ease, background 200ms ease;
+  }
+  .seg-tab.active { color: var(--ink); background: var(--surface); box-shadow: 0 1px 3px rgba(28,27,24,0.08); }
+  .fade-in { animation: fadeIn 500ms cubic-bezier(0.16,1,0.3,1) both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
 </head>
-<body>
-<p class="p1"><span class="s1">Finanzas personales</span></p>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px 'Helvetica Neue'; color: #151513; -webkit-text-stroke: #151513"><span class="s1">Mis Finanzas</span></h1>
-<p class="p1"><span class="s1">Accede con tu cuenta para tener tus datos al día en el móvil y el ordenador.</span></p>
-<p class="p3"><span class="s2"><b>Entrar</b></span><span class="s3"> </span><span class="s4">Crear cuenta</span></p>
-<p class="p4"><span class="s5"></span><br></p>
-<p class="p5"><span class="s5"></span><br></p>
-<p class="p1"><span class="s5">Finanzas personales</span></p>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px 'Helvetica Neue'; color: #151513; -webkit-text-stroke: #151513"><span class="s5">Mis Finanzas</span></h1>
-<p class="p6"><span class="s6">Salir</span></p>
-<p class="p3"><span class="s4">‹</span><span class="s7"> </span><span class="s4">›</span></p>
-<p class="p7"><span class="s8"><b>Resumen</b></span><span class="s9"> </span><span class="s5"><b>Registrar gasto</b></span><span class="s9"> </span><span class="s5"><b>Configuración</b><b></b></span></p>
-<p class="p1"><span class="s1">Ingreso del mes</span></p>
-<p class="p8"><span class="s1">0 €</span></p>
-<p class="p1"><span class="s1">Gastado · Disponible</span></p>
-<p class="p8"><span class="s1">0 € · 0 €</span></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67"><span class="s1">Objetivos del mes</span></h2>
-<p class="p10"><span class="s5"></span><br></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67"><span class="s1">Nuevo gasto</span></h2>
-<p class="p11"><span class="s5"><b>Guardar gasto</b><b></b></span></p>
-<p class="p12"><span class="s5"></span><br></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67"><span class="s1">Ingreso mensual</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px 'Helvetica Neue'; color: #726d67; -webkit-text-stroke: #726d67"><span class="s1">Categorías y reparto</span></h2>
-<p class="p13"><span class="s6">+ Añadir</span></p>
-<p class="p1"><span class="s1">Define cómo repartes tu ingreso: por porcentaje o por importe fijo. La suma de porcentajes no debería superar el 100%.</span></p>
-<p class="p10"><span class="s5"></span><br></p>
-<p class="p14"><span class="s5"></span><br></p>
-<p class="p15"><span class="s10"><b>Guardar configuración</b><b></b></span></p>
-<p class="p16"><span class="s5"></span><br></p>
+<body class="min-h-screen">
+
+<!-- ============ PANTALLA DE LOGIN ============ -->
+<div id="authScreen" class="min-h-screen flex items-center justify-center p-5">
+  <div class="card p-8 w-full max-w-sm fade-in">
+    <p class="text-[10px] uppercase tracking-[0.2em] text-center mb-3" style="color:var(--text-muted)">Finanzas personales</p>
+    <h1 class="serif text-3xl text-center mb-2" style="letter-spacing:-0.02em; color:var(--ink)">Mis Finanzas</h1>
+    <p class="text-sm text-center mb-7" style="color:var(--text-muted)">Accede con tu cuenta para tener tus datos al día en el móvil y el ordenador.</p>
+    <input id="authEmail" type="email" placeholder="Correo electrónico" class="input-field mb-2.5" />
+    <input id="authPass" type="password" placeholder="Contraseña (mín. 6 caracteres)" class="input-field mb-4" />
+    <div class="flex gap-2">
+      <button id="btnLogin" class="btn-primary flex-1">Entrar</button>
+      <button id="btnSignup" class="btn-ghost flex-1 text-sm font-semibold">Crear cuenta</button>
+    </div>
+    <p id="authError" class="text-sm mt-3 text-center" style="color:#B23A3A"></p>
+    <p id="authNotice" class="text-xs mt-4 text-center" style="color:#956400"></p>
+  </div>
+</div>
+
+<!-- ============ APP PRINCIPAL ============ -->
+<div id="appScreen" class="hidden max-w-2xl mx-auto pb-24 px-4">
+  <header class="flex items-center justify-between pt-7 pb-4">
+    <div>
+      <p class="text-[10px] uppercase tracking-[0.2em]" style="color:var(--text-muted)">Finanzas personales</p>
+      <h1 class="serif text-2xl" style="letter-spacing:-0.02em; color:var(--ink)">Mis Finanzas</h1>
+    </div>
+    <button id="btnLogout" class="text-xs font-medium" style="color:var(--text-muted)">Salir</button>
+  </header>
+
+  <!-- Selector de mes -->
+  <div class="flex items-center justify-center gap-4 pb-4">
+    <button id="prevMonth" class="btn-ghost w-8 h-8 flex items-center justify-center text-sm">‹</button>
+    <span id="monthLabel" class="text-sm font-semibold w-36 text-center capitalize"></span>
+    <button id="nextMonth" class="btn-ghost w-8 h-8 flex items-center justify-center text-sm">›</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex p-1 rounded-full mb-5" style="background:var(--surface-soft); border:1px solid var(--border)">
+    <button data-tab="resumen" class="seg-tab active">Resumen</button>
+    <button data-tab="gasto" class="seg-tab">Registrar gasto</button>
+    <button data-tab="config" class="seg-tab">Configuración</button>
+  </div>
+
+  <!-- ===== TAB RESUMEN ===== -->
+  <section id="tab-resumen" class="space-y-4 fade-in">
+    <div class="grid grid-cols-2 gap-3">
+      <div class="card p-5">
+        <p class="text-xs mb-1" style="color:var(--text-muted)">Ingreso del mes</p>
+        <p id="sumIncome" class="serif text-2xl" style="color:var(--ink)">0 €</p>
+      </div>
+      <div class="card p-5">
+        <p class="text-xs mb-1" style="color:var(--text-muted)">Gastado · Disponible</p>
+        <p id="sumSpent" class="serif text-lg" style="color:var(--ink)">0 € · 0 €</p>
+      </div>
+    </div>
+
+    <div class="card p-5">
+      <h2 class="text-xs font-semibold uppercase tracking-wide mb-4" style="color:var(--text-muted)">Objetivos del mes</h2>
+      <div id="categoryRings" class="grid grid-cols-3 gap-y-6 gap-x-2"></div>
+    </div>
+  </section>
+
+  <!-- ===== TAB REGISTRAR GASTO ===== -->
+  <section id="tab-gasto" class="hidden space-y-4 fade-in">
+    <div class="card p-5 space-y-3">
+      <h2 class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:var(--text-muted)">Nuevo gasto</h2>
+      <input id="expDate" type="date" class="input-field" />
+      <select id="expCategory" class="input-field"></select>
+      <input id="expAmount" type="number" step="0.01" placeholder="Importe (€)" class="input-field" />
+      <input id="expNote" type="text" placeholder="¿En qué? (opcional)" class="input-field" />
+      <button id="btnAddExpense" class="btn-primary w-full">Guardar gasto</button>
+    </div>
+
+    <div class="card divide-warm overflow-hidden" id="expenseList"></div>
+  </section>
+
+  <!-- ===== TAB CONFIGURACIÓN ===== -->
+  <section id="tab-config" class="hidden space-y-4 fade-in">
+    <div class="card p-5 space-y-3">
+      <h2 class="text-xs font-semibold uppercase tracking-wide" style="color:var(--text-muted)">Ingreso mensual</h2>
+      <input id="cfgIncome" type="number" step="0.01" placeholder="Importe neto que ingresas al mes (€)" class="input-field" />
+    </div>
+
+    <div class="card p-5 space-y-3">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xs font-semibold uppercase tracking-wide" style="color:var(--text-muted)">Categorías y reparto</h2>
+        <button id="btnAddCategory" class="text-xs font-semibold" style="color:var(--ink)">+ Añadir</button>
+      </div>
+      <p class="text-xs" style="color:var(--text-muted)">Define cómo repartes tu ingreso: por porcentaje o por importe fijo. La suma de porcentajes no debería superar el 100%.</p>
+      <div id="categoryEditor" class="space-y-2"></div>
+      <p id="cfgTotalPct" class="text-xs font-medium" style="color:var(--text-muted)"></p>
+    </div>
+
+    <button id="btnSaveConfig" class="btn-primary w-full">Guardar configuración</button>
+    <p id="cfgSaved" class="text-sm text-center" style="color:#3D6B4A"></p>
+  </section>
+</div>
+
+<script>
+/* =========================================================
+   1) CONFIGURACIÓN DE FIREBASE
+   Sustituye estos valores por los de TU proyecto Firebase.
+   Los encuentras en: Configuración del proyecto > Tus apps > Web
+   ========================================================= */
+ const firebaseConfig = {
+  apiKey: "AIzaSyBDsG4Fpmvzw4jo1i1yTzQq_J_STbfHTvg",
+  authDomain : "control-finanzas-7f984.firebaseapp.com" , 
+  projectId : "control-finanzas-7f984" , 
+  storageBucket: "control-finanzas-7f984.firebasestorage.app",
+  messagingSenderId: "228304545679",
+  appId: "1:228304545679:web:b4ade27610c10de2640dfa",
+  measurementId: "G-JV73PXMK30"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+/* =========================================================
+   2) ESTADO GLOBAL
+   ========================================================= */
+let currentUser = null;
+let currentDate = new Date();
+currentDate.setDate(1);
+let config = { monthlyIncome: 0, categories: defaultCategories() };
+let expenses = [];
+let unsubExpenses = null;
+
+// Reparto por defecto: sin vivienda ni gastos fijos grandes,
+// centrado en ahorro/inversión + estilo de vida (viajes, salidas, comidas, caprichos).
+function defaultCategories() {
+  return [
+    { id: cryptoId(), name: "Ahorro", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Inversión", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Viajes", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Salidas", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Comidas", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Caprichos", type: "percent", value: 15 },
+    { id: cryptoId(), name: "Otros", type: "percent", value: 10 }
+  ];
+}
+function cryptoId() { return Math.random().toString(36).slice(2, 10); }
+function monthKey(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`; }
+function fmt(n) { return (Number(n) || 0).toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €"; }
+
+/* Paleta pastel curada, con un color fijo por palabra clave y un ciclo de reserva
+   para categorías personalizadas que el usuario añada. */
+const CATEGORY_PALETTE = {
+  "ahorro":     { ring: "#4C7C57", tint: "#EDF3EC" },
+  "inversion":  { ring: "#2E76A6", tint: "#E1F3FE" },
+  "inversión":  { ring: "#2E76A6", tint: "#E1F3FE" },
+  "viajes":     { ring: "#7C58A6", tint: "#F1EAFB" },
+  "salidas":    { ring: "#B98527", tint: "#FBF3DB" },
+  "comidas":    { ring: "#C97A3D", tint: "#FCEEE3" },
+  "caprichos":  { ring: "#B24A78", tint: "#FCE7F3" },
+  "otros":      { ring: "#8C8880", tint: "#F1F0ED" }
+};
+const FALLBACK_RING_COLORS = ["#4C7C57","#2E76A6","#7C58A6","#B98527","#C97A3D","#B24A78","#8C8880","#3E7C74"];
+function colorForCategory(name, index) {
+  const key = (name || "").trim().toLowerCase();
+  if (CATEGORY_PALETTE[key]) return CATEGORY_PALETTE[key].ring;
+  return FALLBACK_RING_COLORS[index % FALLBACK_RING_COLORS.length];
+}
+
+/* =========================================================
+   3) AUTENTICACIÓN
+   ========================================================= */
+document.getElementById("btnLogin").onclick = () => {
+  const email = document.getElementById("authEmail").value.trim();
+  const pass = document.getElementById("authPass").value;
+  auth.signInWithEmailAndPassword(email, pass).catch(showAuthError);
+};
+document.getElementById("btnSignup").onclick = () => {
+  const email = document.getElementById("authEmail").value.trim();
+  const pass = document.getElementById("authPass").value;
+  auth.createUserWithEmailAndPassword(email, pass).catch(showAuthError);
+};
+document.getElementById("btnLogout").onclick = () => auth.signOut();
+
+function showAuthError(err) {
+  document.getElementById("authError").textContent = translateAuthError(err.code);
+}
+function translateAuthError(code) {
+  const map = {
+    "auth/invalid-email": "Correo no válido.",
+    "auth/user-not-found": "No existe una cuenta con ese correo. Prueba 'Crear cuenta'.",
+    "auth/wrong-password": "Contraseña incorrecta.",
+    "auth/email-already-in-use": "Ya existe una cuenta con ese correo. Prueba 'Entrar'.",
+    "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
+    "auth/invalid-credential": "Correo o contraseña incorrectos."
+  };
+  return map[code] || ("Error: " + code);
+}
+
+auth.onAuthStateChanged(user => {
+  currentUser = user;
+  if (user) {
+    document.getElementById("authScreen").classList.add("hidden");
+    document.getElementById("appScreen").classList.remove("hidden");
+    loadConfig();
+    listenExpenses();
+  } else {
+    document.getElementById("appScreen").classList.add("hidden");
+    document.getElementById("authScreen").classList.remove("hidden");
+    if (unsubExpenses) unsubExpenses();
+  }
+});
+
+/* Aviso si el config de Firebase no ha sido rellenado */
+if (firebaseConfig.apiKey === "TU_API_KEY") {
+  document.getElementById("authNotice").textContent =
+    "Falta configurar Firebase: edita firebaseConfig en index.html (ver README).";
+}
+
+/* =========================================================
+   4) CONFIGURACIÓN (ingreso + categorías) — Firestore: users/{uid}/meta/config
+   ========================================================= */
+async function loadConfig() {
+  const ref = db.collection("users").doc(currentUser.uid).collection("meta").doc("config");
+  const snap = await ref.get();
+  if (snap.exists) {
+    config = snap.data();
+  } else {
+    config = { monthlyIncome: 0, categories: defaultCategories() };
+    await ref.set(config);
+  }
+  document.getElementById("cfgIncome").value = config.monthlyIncome || "";
+  renderCategoryEditor();
+  renderExpenseCategoryOptions();
+  renderSummary();
+}
+
+function renderCategoryEditor() {
+  const wrap = document.getElementById("categoryEditor");
+  wrap.innerHTML = "";
+  config.categories.forEach((cat, i) => {
+    const dotColor = colorForCategory(cat.name, i);
+    const row = document.createElement("div");
+    row.className = "flex gap-2 items-center";
+    row.innerHTML = `
+      <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:${dotColor}"></span>
+      <input type="text" value="${cat.name}" class="input-field flex-1 py-1.5" data-field="name" />
+      <select class="input-field w-[72px] py-1.5" data-field="type">
+        <option value="percent" ${cat.type === "percent" ? "selected" : ""}>%</option>
+        <option value="fixed" ${cat.type === "fixed" ? "selected" : ""}>€ fijo</option>
+      </select>
+      <input type="number" step="0.01" value="${cat.value}" class="input-field w-20 py-1.5" data-field="value" />
+      <button class="text-sm shrink-0" style="color:#B0693B" title="Eliminar">✕</button>
+    `;
+    const [nameInput, typeSelect, valueInput] = row.querySelectorAll("input, select");
+    const delBtn = row.querySelector("button");
+    nameInput.oninput = () => { cat.name = nameInput.value; updateTotals(); };
+    typeSelect.onchange = () => { cat.type = typeSelect.value; updateTotals(); };
+    valueInput.oninput = () => { cat.value = parseFloat(valueInput.value) || 0; updateTotals(); };
+    delBtn.onclick = () => { config.categories = config.categories.filter(c => c.id !== cat.id); renderCategoryEditor(); };
+    wrap.appendChild(row);
+  });
+  updateTotals();
+}
+function updateTotals() {
+  const pct = config.categories.filter(c => c.type === "percent").reduce((s, c) => s + (Number(c.value) || 0), 0);
+  document.getElementById("cfgTotalPct").textContent = `Suma de porcentajes: ${pct}%`;
+}
+
+document.getElementById("btnAddCategory").onclick = () => {
+  config.categories.push({ id: cryptoId(), name: "Nueva categoría", type: "percent", value: 0 });
+  renderCategoryEditor();
+};
+
+document.getElementById("btnSaveConfig").onclick = async () => {
+  config.monthlyIncome = parseFloat(document.getElementById("cfgIncome").value) || 0;
+  const ref = db.collection("users").doc(currentUser.uid).collection("meta").doc("config");
+  await ref.set(config);
+  renderExpenseCategoryOptions();
+  renderSummary();
+  const msg = document.getElementById("cfgSaved");
+  msg.textContent = "Guardado ✔";
+  setTimeout(() => (msg.textContent = ""), 2000);
+};
+
+function renderExpenseCategoryOptions() {
+  const sel = document.getElementById("expCategory");
+  sel.innerHTML = "";
+  config.categories.forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat.name;
+    opt.textContent = cat.name;
+    sel.appendChild(opt);
+  });
+}
+
+/* =========================================================
+   5) GASTOS — Firestore: users/{uid}/expenses/{id}
+   ========================================================= */
+document.getElementById("expDate").valueAsDate = new Date();
+
+function listenExpenses() {
+  if (unsubExpenses) unsubExpenses();
+  const ref = db.collection("users").doc(currentUser.uid).collection("expenses");
+  unsubExpenses = ref.onSnapshot(snap => {
+    expenses = [];
+    snap.forEach(doc => expenses.push({ id: doc.id, ...doc.data() }));
+    renderExpenseList();
+    renderSummary();
+  });
+}
+
+document.getElementById("btnAddExpense").onclick = async () => {
+  const date = document.getElementById("expDate").value;
+  const category = document.getElementById("expCategory").value;
+  const amount = parseFloat(document.getElementById("expAmount").value);
+  const note = document.getElementById("expNote").value.trim();
+  if (!date || !category || !amount || amount <= 0) {
+    alert("Revisa la fecha, categoría e importe.");
+    return;
+  }
+  const ref = db.collection("users").doc(currentUser.uid).collection("expenses");
+  await ref.add({
+    date, category, amount, note,
+    month: date.slice(0, 7),
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+  document.getElementById("expAmount").value = "";
+  document.getElementById("expNote").value = "";
+};
+
+function renderExpenseList() {
+  const mKey = monthKey(currentDate);
+  const list = expenses.filter(e => e.month === mKey).sort((a, b) => b.date.localeCompare(a.date));
+  const wrap = document.getElementById("expenseList");
+  wrap.innerHTML = "";
+  if (list.length === 0) {
+    wrap.innerHTML = `<p class="text-sm p-5 text-center" style="color:var(--text-muted)">Sin gastos registrados este mes.</p>`;
+    return;
+  }
+  list.forEach(e => {
+    const row = document.createElement("div");
+    row.className = "flex items-center justify-between px-5 py-3.5 text-sm";
+    row.innerHTML = `
+      <div>
+        <p class="font-semibold" style="color:var(--ink)">${e.category} ${e.note ? "· " + e.note : ""}</p>
+        <p class="text-xs mt-0.5" style="color:var(--text-muted)">${e.date}</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="font-semibold" style="color:var(--ink)">${fmt(e.amount)}</span>
+        <button class="text-sm" style="color:#B0693B" title="Eliminar">✕</button>
+      </div>
+    `;
+    row.querySelector("button").onclick = async () => {
+      await db.collection("users").doc(currentUser.uid).collection("expenses").doc(e.id).delete();
+    };
+    wrap.appendChild(row);
+  });
+}
+
+/* =========================================================
+   6) RESUMEN
+   ========================================================= */
+function renderSummary() {
+  const mKey = monthKey(currentDate);
+  document.getElementById("monthLabel").textContent =
+    currentDate.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+
+  const monthExpenses = expenses.filter(e => e.month === mKey);
+  const totalSpent = monthExpenses.reduce((s, e) => s + Number(e.amount), 0);
+  const income = Number(config.monthlyIncome) || 0;
+
+  document.getElementById("sumIncome").textContent = fmt(income);
+  document.getElementById("sumSpent").textContent = `${fmt(totalSpent)} · ${fmt(income - totalSpent)}`;
+
+  const perCategory = config.categories.map(cat => {
+    const budget = cat.type === "percent" ? (income * cat.value) / 100 : Number(cat.value);
+    const spent = monthExpenses.filter(e => e.category === cat.name).reduce((s, e) => s + Number(e.amount), 0);
+    return { name: cat.name, budget, spent };
+  });
+
+  renderCategoryRings(perCategory);
+  renderExpenseList();
+}
+
+function renderCategoryRings(perCategory) {
+  const wrap = document.getElementById("categoryRings");
+  wrap.innerHTML = "";
+  perCategory.forEach((c, i) => {
+    const rawPct = c.budget > 0 ? (c.spent / c.budget) * 100 : (c.spent > 0 ? 100 : 0);
+    const pct = Math.max(0, Math.min(100, rawPct));
+    const over = c.spent > c.budget && c.budget > 0;
+    const color = over ? "#C2483F" : colorForCategory(c.name, i);
+    const deg = (pct / 100) * 360;
+    const div = document.createElement("div");
+    div.className = "flex flex-col items-center gap-1.5 text-center";
+    div.innerHTML = `
+      <div class="relative w-20 h-20 rounded-full transition-all duration-500" style="background: conic-gradient(${color} ${deg}deg, var(--border) ${deg}deg 360deg)">
+        <div class="absolute inset-[7px] rounded-full flex flex-col items-center justify-center" style="background:var(--surface)">
+          <span class="serif text-base" style="color:${color}">${Math.round(rawPct)}%</span>
+        </div>
+      </div>
+      <span class="text-xs font-semibold leading-tight" style="color:var(--ink)">${c.name}</span>
+      <span class="text-[10px] leading-tight" style="color:var(--text-muted)">${fmt(c.spent)} / ${fmt(c.budget)}</span>
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+/* =========================================================
+   7) NAVEGACIÓN (tabs + mes)
+   ========================================================= */
+document.querySelectorAll(".seg-tab").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".seg-tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("section[id^='tab-']").forEach(s => s.classList.add("hidden"));
+    document.getElementById("tab-" + btn.dataset.tab).classList.remove("hidden");
+  };
+});
+
+document.getElementById("prevMonth").onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); renderSummary(); };
+document.getElementById("nextMonth").onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); renderSummary(); };
+
+/* PWA: registro de service worker (opcional, para "Añadir a pantalla de inicio") */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
 </body>
 </html>
